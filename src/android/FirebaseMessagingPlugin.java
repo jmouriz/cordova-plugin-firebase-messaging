@@ -188,42 +188,42 @@ public class FirebaseMessagingPlugin extends ReflectiveCordovaPlugin {
             throw new UnsupportedOperationException("Notification channels are not supported");
         }
 
-        String channelId = options.getString("id");
-        String channelName = options.getString("name");
-        int importance = options.getInt("importance");
-        NotificationChannel channel = new NotificationChannel(channelId, channelName, importance);
-        channel.setDescription(options.optString("description", ""));
-        channel.setShowBadge(options.optBoolean("badge", true));
-
-        channel.enableLights(options.optBoolean("light", false));
-        channel.setLightColor(options.optInt("lightColor", 0));
-
-        String soundName = options.optString("sound", "default");
-        if (!"default".equals(soundName)) {
-            String packageName = cordova.getActivity().getPackageName();
-            Uri soundUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + packageName + "/raw/" + soundName);
-            channel.setSound(soundUri, new AudioAttributes.Builder()
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                    .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
-                    .build());
-        }
-
-        JSONArray vibrationPattern = options.optJSONArray("vibration");
-        if (vibrationPattern != null) {
-            int patternLength = vibrationPattern.length();
-            long[] patternArray = new long[patternLength];
-            for (int i = 0; i < patternLength; i++) {
-                patternArray[i] = vibrationPattern.getLong(i);
-            }
-            channel.setVibrationPattern(patternArray);
-            channel.enableVibration(true);
-        } else {
-            channel.enableVibration(options.optBoolean("vibration", true));
-        }
-
-        notificationManager.createNotificationChannel(channel);
-
-        callbackContext.success();
+//         String channelId = options.getString("id");
+//         String channelName = options.getString("name");
+//         int importance = options.getInt("importance");
+//         NotificationChannel channel = new NotificationChannel(channelId, channelName, importance);
+//         channel.setDescription(options.optString("description", ""));
+//         channel.setShowBadge(options.optBoolean("badge", true));
+// 
+//         channel.enableLights(options.optBoolean("light", false));
+//         channel.setLightColor(options.optInt("lightColor", 0));
+// 
+//         String soundName = options.optString("sound", "default");
+//         if (!"default".equals(soundName)) {
+//             String packageName = cordova.getActivity().getPackageName();
+//             Uri soundUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + packageName + "/raw/" + soundName);
+//             channel.setSound(soundUri, new AudioAttributes.Builder()
+//                     .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+//                     .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
+//                     .build());
+//         }
+// 
+//         JSONArray vibrationPattern = options.optJSONArray("vibration");
+//         if (vibrationPattern != null) {
+//             int patternLength = vibrationPattern.length();
+//             long[] patternArray = new long[patternLength];
+//             for (int i = 0; i < patternLength; i++) {
+//                 patternArray[i] = vibrationPattern.getLong(i);
+//             }
+//             channel.setVibrationPattern(patternArray);
+//             channel.enableVibration(true);
+//         } else {
+//             channel.enableVibration(options.optBoolean("vibration", true));
+//         }
+// 
+//         notificationManager.createNotificationChannel(channel);
+// 
+//         callbackContext.success();
     }
 
     @CordovaMethod
@@ -232,12 +232,12 @@ public class FirebaseMessagingPlugin extends ReflectiveCordovaPlugin {
             throw new UnsupportedOperationException("Notification channels are not supported");
         }
 
-        NotificationChannel channel = notificationManager.getNotificationChannel(channelId);
-        if (channel == null) {
-            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, (String)null));
-        } else {
-            callbackContext.success(toJSON(channel));
-        }
+//         NotificationChannel channel = notificationManager.getNotificationChannel(channelId);
+//         if (channel == null) {
+//             callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, (String)null));
+//         } else {
+//             callbackContext.success(toJSON(channel));
+//         }
     }
 
     @CordovaMethod
@@ -246,13 +246,13 @@ public class FirebaseMessagingPlugin extends ReflectiveCordovaPlugin {
             throw new UnsupportedOperationException("Notification channels are not supported");
         }
 
-        List<NotificationChannel> channels = notificationManager.getNotificationChannels();
-        JSONArray result = new JSONArray();
-        for (NotificationChannel channel : channels) {
-            result.put(toJSON(channel));
-        }
-
-        callbackContext.success(result);
+//         List<NotificationChannel> channels = notificationManager.getNotificationChannels();
+//         JSONArray result = new JSONArray();
+//         for (NotificationChannel channel : channels) {
+//             result.put(toJSON(channel));
+//         }
+//
+//        callbackContext.success(result);
     }
 
     @CordovaMethod
@@ -261,9 +261,9 @@ public class FirebaseMessagingPlugin extends ReflectiveCordovaPlugin {
             throw new UnsupportedOperationException("Notification channels are not supported");
         }
 
-        notificationManager.deleteNotificationChannel(channelId);
-
-        callbackContext.success();
+//                notificationManager.deleteNotificationChannel(channelId);
+//        
+//                callbackContext.success();
     }
 
     @Override
@@ -350,12 +350,12 @@ public class FirebaseMessagingPlugin extends ReflectiveCordovaPlugin {
         }
     }
 
-    private static JSONObject toJSON(NotificationChannel channel) throws JSONException {
-        return new JSONObject()
-                .put("id", channel.getId())
-                .put("name", channel.getName())
-                .put("description", channel.getDescription());
-    }
+//    private static JSONObject toJSON(NotificationChannel channel) throws JSONException {
+//        return new JSONObject()
+//                .put("id", channel.getId())
+//                .put("name", channel.getName())
+//                .put("description", channel.getDescription());
+//    }
 
     private static JSONObject toJSON(RemoteMessage.Notification notification) throws JSONException {
         return new JSONObject()

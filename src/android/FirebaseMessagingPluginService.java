@@ -1,6 +1,6 @@
 package by.chemerisuk.cordova.firebase;
 
-import android.app.NotificationChannel;
+//import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -56,11 +56,11 @@ public class FirebaseMessagingPluginService extends FirebaseMessagingService {
         }
         // On Android O or greater we need to create a new notification channel
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel defaultChannel = notificationManager.getNotificationChannel(defaultNotificationChannel);
-            if (defaultChannel == null) {
-                notificationManager.createNotificationChannel(
-                        new NotificationChannel(defaultNotificationChannel, "Firebase", NotificationManager.IMPORTANCE_HIGH));
-            }
+//            NotificationChannel defaultChannel = notificationManager.getNotificationChannel(defaultNotificationChannel);
+//            if (defaultChannel == null) {
+//                notificationManager.createNotificationChannel(
+//                        new NotificationChannel(defaultNotificationChannel, "Firebase", NotificationManager.IMPORTANCE_HIGH));
+//            }
         }
     }
 
