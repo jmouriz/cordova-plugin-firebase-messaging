@@ -8,7 +8,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <license>MIT</license>
     <keywords>cordova</keywords>
     <repo>https://github.com/jmouriz/cordova-plugin-firebase-messaging</repo>
-    <issue>https://github.com/jmouriz/cordova-plugin-firebase-messaging/issues</issue>
+    <issue>https://github.com/chemerisu/cordova-plugin-firebase-messaging/issues</issue>
 
     <js-module src="www/FirebaseMessaging.js" name="FirebaseMessaging">
         <merges target="cordova.plugins.firebase.messaging" />
